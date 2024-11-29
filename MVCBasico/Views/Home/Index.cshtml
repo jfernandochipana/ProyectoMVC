@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MVCBasico.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Página principal";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a Electrónica G2 - Venta de productos electrónicos</h1>
+
+    <img src="../images/fondo.jpg" alt="celulares" width="150"/>
+
+    <br />
+    <br />
+
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+ 
+        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Auricular" asp-action="Index">Auriculares</a>
+        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Celular" asp-action="Index">Celulares</a>
+        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Computadora" asp-action="Index">Computadoras</a>
+    
+    </div>
+    <br />
+
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+
+<style>
+    body {
+        background-color: #f0f8ff; 
+        color: #333; 
+    }
+
+    .text-center {
+        color: #007bff; 
+    }
+
+    h1.display-4 {
+        color: #ff6347; 
+    }
+
+</style>
+

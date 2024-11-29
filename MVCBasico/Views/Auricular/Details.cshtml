@@ -1,0 +1,43 @@
+﻿@model MVCBasico.Models.Auricular
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1>Especificaciones:</h1>
+
+<div>
+    <h4>Auricular</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stock)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.potenciaWatts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.potenciaWatts)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model?.ProductoId">Edit</a> *@
+    <a asp-controller="Home" asp-action="Pagar" asp-route-id="@Model.ProductoId" asp-route-nombre="@Model?.nombre" asp-route-precio="@Model?.precio" class="btn btn-primary">Comprar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>
