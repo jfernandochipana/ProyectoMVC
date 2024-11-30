@@ -20,13 +20,14 @@ namespace MVCBasico.Controllers
         }
 
         // GET: Celular
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? clienteId)
         {
+            ViewBag.clienteId = clienteId;
             return View(await _context.Celulares.ToListAsync());
         }
 
         // GET: Celular/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? clienteId)
         {
             if (id == null)
             {
@@ -39,7 +40,7 @@ namespace MVCBasico.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.clienteId = clienteId;
             return View(celular);
         }
 

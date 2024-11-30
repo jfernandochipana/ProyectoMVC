@@ -25,10 +25,10 @@
 
     <form asp-controller="Venta" asp-action="Confirmacion" method="post">
         
-        <div class="row mb-3">
+        <div class="row mb-3" style="display: none;">
             <label asp-for="ClienteId" class="col-sm-2 col-form-label">Id cliente</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" asp-for="ClienteId" name="ClienteId" value="1">
+                <input type="number" class="form-control" asp-for="ClienteId" name="ClienteId" value="@ViewBag.clienteId">
             </div>
         </div>
 

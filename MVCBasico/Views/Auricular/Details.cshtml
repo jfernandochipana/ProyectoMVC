@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "Detalle";
 }
+<h2 style="display: none;">Señor @ViewBag.clienteId seleccionó el producto:</h2>
 
-<h1>Especificaciones:</h1>
+<h1>Especificaciones</h1>
 
 <div>
     <h4>Auricular</h4>
@@ -38,6 +39,6 @@
 </div>
 <div>
     @* <a asp-action="Edit" asp-route-id="@Model?.ProductoId">Edit</a> *@
-    <a asp-controller="Home" asp-action="Pagar" asp-route-id="@Model.ProductoId" asp-route-nombre="@Model?.nombre" asp-route-precio="@Model?.precio" class="btn btn-primary">Comprar</a>
+    <a asp-controller="Home" asp-action="Pagar" asp-route-id="@Model.ProductoId" asp-route-nombre="@Model?.nombre" asp-route-precio="@Model?.precio" asp-route-clienteId="@ViewBag.clienteId" class="btn btn-primary">Comprar</a>
     <a asp-action="Index" class="btn btn-secondary">Volver</a>
 </div>

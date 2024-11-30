@@ -44,7 +44,7 @@
             </td>
             <td>
                 @* <a asp-action="Edit" asp-route-id="@item.ProductoId">Edit</a>  *@
-                    <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-info">Detalle</a>
+                    <a asp-action="Details" asp-route-id="@item.ProductoId" asp-route-clienteId="@ViewBag.clienteId" class="btn btn-info">Detalle</a>
                 @* <a asp-action="Delete" asp-route-id="@item.ProductoId">Delete</a> *@
             </td>
         </tr>

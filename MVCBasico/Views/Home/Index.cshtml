@@ -1,24 +1,33 @@
-﻿@model IEnumerable<MVCBasico.Models.Cliente>
+﻿@model List<Cliente>
 
 @{
     ViewData["Title"] = "Página principal";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bienvenido a Electrónica G2 - Venta de productos electrónicos</h1>
+    <h1 class="display-4">Bienvenido a Electrónica G2 - Venta de productos electrónicos</h1><br />
 
     <img src="../images/fondo.jpg" alt="celulares" width="150"/>
 
+    <br /><br />
+    <form asp-controller="Home" asp-action="RecibirCliente" method="post">
+    <p>Seleccione su usuario para ver productos <span style="color:red">*</span></p>
+    <select name="clienteId" class="form-select" aria-label="Default select example">
+        <option selected disabled>Elija uno</option>
+        @foreach(Cliente cliente in Model)
+        {
+            <option value="@cliente.Id">@($"{cliente.Nombre} {cliente.Apellido}")</option>
+        }
+    </select>
     <br />
+        <button type="submit" class="btn btn-warning">Seleccionar</button>
+    </form>
     <br />
-
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
- 
-        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Auricular" asp-action="Index">Auriculares</a>
-        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Celular" asp-action="Index">Celulares</a>
-        <a type="button" class="btn btn-outline-primary" asp-area="" asp-controller="Computadora" asp-action="Index">Computadoras</a>
-    
-    </div>
+@*     <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a type="submit" class="btn btn-outline-primary" asp-controller="Auricular" asp-action="Index">Auriculares</a>
+            <a type="submit" class="btn btn-outline-primary" asp-controller="Celular" asp-action="Index">Celulares</a>
+            <a type="submit" class="btn btn-outline-primary" asp-controller="Computadora" asp-action="Index">Computadoras</a>
+    </div> *@
     <br />
 
     @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
@@ -31,11 +40,12 @@
     }
 
     .text-center {
-        color: #007bff; 
+        color: black; 
     }
 
     h1.display-4 {
-        color: #ff6347; 
+        color: darkblue; 
+        font-size: 40px;
     }
 
 </style>

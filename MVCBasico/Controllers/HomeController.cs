@@ -18,7 +18,7 @@ namespace MVCBasico.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("MostrarClientes", "Cliente");
         }
 
         public IActionResult Privacy()
@@ -32,22 +32,22 @@ namespace MVCBasico.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Pagar(int id, string nombre, double precio)
+        public IActionResult Pagar(int id, string nombre, double precio, int clienteId)
         {
             //var producto = new Auricular { nombre = nombre, precio = precio };
             ViewBag.Id = id;
             ViewBag.Nombre = nombre;
             ViewBag.Precio = precio;
+            ViewBag.clienteId = clienteId;
             // retorna una vista e indico el nombre de la vista
             return View("Carrito");
         }
 
-        //public IActionResult Confirmacion()
-        //{
-        //    // retorna una vista e indico el nombre de la vista
-        //    return View("Confirmacion");
-        //}
-
+        public IActionResult RecibirCliente(int clienteId)
+        {
+            ViewBag.clienteId = clienteId;
+            return View();
+        }
 
     }
 }

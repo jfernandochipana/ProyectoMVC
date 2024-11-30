@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using MVCBasico.Context;
 using MVCBasico.Models;
 
+using cli = MVCBasico.Models;//necesario para declarar la lista clientes
+
 namespace MVCBasico.Controllers
 {
     public class ClienteController : Controller
@@ -156,5 +158,15 @@ namespace MVCBasico.Controllers
         {
             return _context.Clientes.Any(e => e.Id == id);
         }
+
+        public IActionResult MostrarClientes()
+        {                                        // Del contexto via el DBSET leo la tabla,
+                                                 // equivale a select * from Productos   
+            List<cli.Cliente> ListadoClientes = _context.Clientes.ToList();
+
+            // retorno una vista llamada MostrarProductos y le paso la lista de productos para mostrarlas
+            return View("~/Views/Home/Index.cshtml", ListadoClientes);
+        }
+
     }
 }
