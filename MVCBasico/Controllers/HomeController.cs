@@ -11,9 +11,12 @@ namespace MVCBasico.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ElectronicaDatabaseContext _context; //para mostrar cliente en carrito
+
+        public HomeController(ILogger<HomeController> logger, ElectronicaDatabaseContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -38,7 +41,16 @@ namespace MVCBasico.Controllers
             ViewBag.Id = id;
             ViewBag.Nombre = nombre;
             ViewBag.Precio = precio;
-            ViewBag.clienteId = clienteId;
+            //ViewBag.clienteId = clienteId;
+
+            if (clienteId != null)
+            {
+                var clienteBuscado = _context.Clientes.Find(clienteId);
+                ViewBag.clienteId = clienteBuscado.Id;
+                ViewBag.nombreCliente = clienteBuscado.Nombre;
+                ViewBag.apellidoCliente = clienteBuscado.Apellido;
+            }
+
             // retorna una vista e indico el nombre de la vista
             return View("Carrito");
         }

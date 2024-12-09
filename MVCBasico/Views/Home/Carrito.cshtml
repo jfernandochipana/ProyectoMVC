@@ -7,6 +7,11 @@
 
 <div class="scrollable-div">
 
+    <div class="alinear2">
+        <h1 style="display: none;">Productos</h1>
+        <button type="button" class="btn btn-outline-primary" disabled>Sesión @ViewData["nombreCliente"] @ViewData["apellidoCliente"]</button>
+    </div>
+
 <h4 style="text-align:center">Carrito de compras</h4>
 
 
@@ -19,11 +24,11 @@
 </div>
 
 <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Precio</span>
+        <span class="input-group-text" id="inputGroup-sizing-default">Precio (ARS)</span>
     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="@ViewBag.Precio" disabled>
 </div>
 
-    <form asp-controller="Venta" asp-action="Confirmacion" method="post">
+    <form asp-controller="Venta" asp-action="Confirmacion" method="post" class="needs-validation" novalidate>
         
         <div class="row mb-3" style="display: none;">
             <label asp-for="ClienteId" class="col-sm-2 col-form-label">Id cliente</label>
@@ -42,13 +47,13 @@
     <div class="row mb-3">
         <label asp-for="emailComprador" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-                <input type="email" class="form-control" asp-for="emailComprador" name="emailComprador" placeholder="ingrese email donde recibirá factura">
+                <input type="email" class="form-control" asp-for="emailComprador" name="emailComprador" placeholder="ingrese email donde recibirá factura" required>
         </div>
     </div>
     <div class="row mb-3">
             <label asp-for="direccionEnvio" class="col-sm-2 col-form-label">Dirección envío</label>
         <div class="col-sm-10">
-                <input type="text" name="direccionEnvio" class="form-control" asp-for="direccionEnvio" placeholder="Av. Rivadavia 1403">
+                <input type="text" name="direccionEnvio" class="form-control" asp-for="direccionEnvio" placeholder="Av. Rivadavia 1403" required>
         </div>
     </div>
 
@@ -78,16 +83,16 @@
 
         <div class="row">
             <div class="col">
-                <input asp-for="nombreTarjeta" name="nombreTarjeta" type="text" class="form-control" placeholder="Nombre tarjeta" aria-label="Nombre tarjeta">
+                <input asp-for="nombreTarjeta" name="nombreTarjeta" type="text" class="form-control" placeholder="Nombre tarjeta" aria-label="Nombre tarjeta" required>
             </div>
             <div class="col">
-                <input asp-for="numeroTarjeta" name="numeroTarjeta" type="text" class="form-control" placeholder="Numero tarjeta" aria-label="Numero tarjeta">
+                <input asp-for="numeroTarjeta" name="numeroTarjeta" type="text" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" aria-label="Numero tarjeta" pattern="\d{4}-\d{4}-\d{4}-\d{4}" title="El formato debe ser 1234-5678-9012-3456" required>
             </div>
             <div class="col">
-                <input asp-for="fechaVencimientoTarjeta" name="fechaVencimientoTarjeta" type="text" class="form-control" placeholder="Fecha venc. dd/mm/aaaa" aria-label="Fecha vencimiento">
+                <input asp-for="fechaVencimientoTarjeta" name="fechaVencimientoTarjeta" type="date" class="form-control" placeholder="Fecha venc. dd/mm/aaaa" aria-label="Fecha vencimiento" required>
             </div>
             <div class="col">
-                <input asp-for="cvv" name="cvv" type="text" class="form-control" placeholder="CVV" aria-label="Clave cvv">
+                <input asp-for="cvv" name="cvv" type="text" class="form-control" placeholder="CVV" aria-label="Clave cvv" maxlength="3" required>
             </div>
         </div>
         <br />
@@ -99,3 +104,4 @@
 </form>
     
 </div>
+

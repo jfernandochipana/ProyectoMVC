@@ -4,8 +4,10 @@
     ViewData["Title"] = "Auriculares en stock";
 }
 
-<h1>Productos</h1>
-
+<div class="alinear2">
+    <h1>Productos</h1>
+    <button type="button" class="btn btn-outline-primary" disabled>Sesión @ViewData["nombreCliente"] @ViewData["apellidoCliente"]</button>
+</div>
 @* <p>
     <a asp-action="Create">Create New</a>
 </p> *@
@@ -16,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.precio)
+                @Html.DisplayNameFor(model => model.precio) (ARS)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.stock)

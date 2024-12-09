@@ -22,7 +22,13 @@ namespace MVCBasico.Controllers
         // GET: Celular
         public async Task<IActionResult> Index(int? clienteId)
         {
-            ViewBag.clienteId = clienteId;
+            if (clienteId != null)
+            {
+                var clienteBuscado = _context.Clientes.Find(clienteId);
+                ViewBag.clienteId = clienteBuscado.Id;
+                ViewBag.nombreCliente = clienteBuscado.Nombre;
+                ViewBag.apellidoCliente = clienteBuscado.Apellido;
+            }
             return View(await _context.Celulares.ToListAsync());
         }
 
@@ -40,7 +46,15 @@ namespace MVCBasico.Controllers
             {
                 return NotFound();
             }
-            ViewBag.clienteId = clienteId;
+
+            if (clienteId != null)
+            {
+                var clienteBuscado = _context.Clientes.Find(clienteId);
+                ViewBag.clienteId = clienteBuscado.Id;
+                ViewBag.nombreCliente = clienteBuscado.Nombre;
+                ViewBag.apellidoCliente = clienteBuscado.Apellido;
+            }
+
             return View(celular);
         }
 

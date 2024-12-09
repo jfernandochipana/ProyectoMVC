@@ -20,9 +20,20 @@ namespace MVCBasico.Controllers
         }
 
         // GET: Auricular
+        //public async Task<IActionResult> Index(int? clienteId)
+        //{
+        //    ViewBag.clienteId = clienteId;
+        //    return View(await _context.Auriculares.ToListAsync());
+        //}
         public async Task<IActionResult> Index(int? clienteId)
         {
-            ViewBag.clienteId = clienteId;
+            if (clienteId != null)
+            {
+                var clienteBuscado = _context.Clientes.Find(clienteId);
+                ViewBag.clienteId = clienteBuscado.Id;
+                ViewBag.nombreCliente = clienteBuscado.Nombre;
+                ViewBag.apellidoCliente = clienteBuscado.Apellido;
+            }
             return View(await _context.Auriculares.ToListAsync());
         }
 
@@ -40,7 +51,15 @@ namespace MVCBasico.Controllers
             {
                 return NotFound();
             }
-            ViewBag.clienteId = clienteId;
+
+            if (clienteId != null)
+            {
+                var clienteBuscado = _context.Clientes.Find(clienteId);
+                ViewBag.clienteId = clienteBuscado.Id;
+                ViewBag.nombreCliente = clienteBuscado.Nombre;
+                ViewBag.apellidoCliente = clienteBuscado.Apellido;
+            }
+
             return View(auricular);
         }
 
